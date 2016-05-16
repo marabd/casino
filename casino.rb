@@ -38,7 +38,6 @@ class Casino
 		when '1'
 			#reference the Slots module
 		when '2'
-			#reference the High / Low module
 			hilow = Games::HighLow.new(@players.first)
 			hilow.welcome
 			@players.first.bankroll += hilow.game
@@ -61,21 +60,6 @@ end
 
 Casino.new.flow
 
-	# how do we continuously track the remaining balance?
-
-	# main menu
-		# bet function
-		# exit
-	# thanks for playing
-
-# welcome
-# get player name
-# get player bank roll
-# game menu includes Slots and High/Low
-# bankroll increases and decreases with wins and losses
-
-# class Casino
-# 	include Mechanics
 
 # 	def play
 # 		puts Mechanics::Dice.roll

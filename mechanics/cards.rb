@@ -36,10 +36,6 @@ module Mechanics
 		 end
 		end
 
-		# def self.randomize
-		# 	@play_card = @cards.sample 
-		# end
-
 	end
 
 end

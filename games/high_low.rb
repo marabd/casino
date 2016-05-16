@@ -1,4 +1,3 @@
-# require_relative '../mechanics/cards'
 Dir[File.dirname(__FILE__) + '/../mechanics/cards.rb'].each { |file| require file }
 
 
@@ -43,7 +42,6 @@ include Mechanics
 					dealer_card.suit < player_card.suit ? dealer_wins : player_wins
 				end
 			else
-				# puts "User Input Error, Please Try Again"
 				game
 			end
 		end
@@ -59,29 +57,3 @@ include Mechanics
   	end
 	end
 end
-
-
-
-#class Casino
-# 	include Mechanics
-
-# 	def play
-# 		puts Mechanics::Dice.roll
-# 		cards = Mechanics::Deck.new.cards.shuffle
-# 		cards.each do |card|
-# 			puts "#{card.rank} of #{card.suit}"
-# 		end
-# 	end
-# end
-		# welcome to High / Low
-		# need to pull in the 'cards' module
-		# card randomly assigned to dealer
-		# card randomly assigned to player
-		# only show player their card
-		# give player option to choose if their card is higher or lower than the dealer
-		# get player input (either higher/lower)
-		# evaluates compares player's card against dealer's using higher/lower
-
-
-#require_relative 'mechanics/dice'
-# Dir[File.dirname(__FILE__) + '/mechanics/*.rb'].each { |file| require file }
