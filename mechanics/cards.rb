@@ -19,7 +19,6 @@ module Mechanics
 			generate_deck
 		end
 
-
 		def generate_deck
 			@suits.each do |suit|
 		 		@ranks.each do |rank|
@@ -30,6 +29,19 @@ module Mechanics
 
 		end
 
+		def play
+		 cards = Deck.new.cards.shuffle
+		 cards.each do |card|
+		 	puts "#{card.rank} of #{card.suit}"
+		 end
+		end
+
+		# def self.randomize
+		# 	@play_card = @cards.sample 
+		# end
+
 	end
 
 end
+
+

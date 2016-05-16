@@ -1,4 +1,3 @@
-#dice.rb - file should be named as module when using RAILS
 module Mechanics
 	module Dice
 		def self.roll
@@ -8,3 +7,4 @@ module Mechanics
 	end
 end
 
+#dice.rb - file should be named as module when using RAILS
