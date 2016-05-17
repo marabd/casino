@@ -17,11 +17,26 @@ module Games
 		end
 
 		def game
-			puts "And your values are..."
-			symbols = []
-			symbols << rand(1..9) << rand(1..9) << rand(1..9)
-			puts symbols
-			if symbols[0] == symbols[1] && symbols[1] == symbols[2]
+			symbols = ["❤", "☂", "♞", "∞", "☀", "❄"]
+
+			symb1 = []
+			symb2 = []
+			symb3 = []
+
+			symb1 << symbols.sample << symbols.sample << symbols.sample
+			symb2 << symbols.sample << symbols.sample << symbols.sample
+			symb3 << symbols.sample << symbols.sample << symbols.sample
+
+			puts "And your slots are..."
+			puts symb1.join(" ")
+			puts symb2.join(" ")
+			puts symb3.join(" ")
+
+			if symb1[0] == symb1[1] && symb1[1] == symb1[2]
+				player_wins
+			elsif symb2[0] == symb2[1] && symb2[1] == symb2[2]
+				player_wins
+			elsif symb3[0] == symb3[1] && symb3[1] == symb3[2]
 				player_wins
 			else
 				dealer_wins
@@ -37,8 +52,7 @@ module Games
   		puts "Too Bad!"
   		return @bet * -1
   	end
-
-	end
+  end
 end
 
 

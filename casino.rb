@@ -40,11 +40,13 @@ class Casino
 			slot_play.welcome
 			@players.first.bankroll += slot_play.game
 			puts "Your bank roll is now: #{@players.first.bankroll}"
+			end_of_game
 		when '2'
 			hilow = Games::HighLow.new(@players.first)
 			hilow.welcome
 			@players.first.bankroll += hilow.game
 			puts "Your bank roll is now: #{@players.first.bankroll}"
+			end_of_game
 		when '3'
 			puts "Thanks for playing!"
 			exit(0)
@@ -55,6 +57,22 @@ class Casino
 
 	end
 		
+	def end_of_game
+  	puts "Thanks for playing!"
+  	puts "What would you like to do now?"
+  	puts "1. Return to the Main Menu"
+  	puts "2. Exit"
+		case gets.strip
+  	when '1'
+  		menu
+  	when '2'
+  		exit(0)
+  	else
+  		puts "Bad User Input, Please Choose Again"
+  		end_of_game
+  	end
+	end
+			
 	def flow
 		welcome
 		menu
