@@ -22,7 +22,7 @@ module Games
 			symbols = []
 			symbols << rand(1..9) << rand(1..9) << rand(1..9)
 			puts symbols
-			if symbols[0] = symbols[1] = symbols[2]
+			if symbols[0] == symbols[1] && symbols[1] == symbols[2]
 				player_wins
 			else
 				dealer_wins
