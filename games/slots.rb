@@ -2,7 +2,6 @@
 
 
 module Games
-# include Mechanics
 	class Slots
 
 		def initialize(player)
@@ -12,12 +11,12 @@ module Games
 		
 		def welcome
 			puts "Welcome to Ruby Slots"
-			puts "Your Balance Is: #{@player}"
+			puts "Your Balance Is: #{@player.bankroll}"
 			puts "How much would you like to bet?"
 			@bet = gets.strip.to_i
 		end
 
-		def slot
+		def game
 			puts "And your values are..."
 			symbols = []
 			symbols << rand(1..9) << rand(1..9) << rand(1..9)
@@ -41,12 +40,5 @@ module Games
 
 	end
 end
-
-cat = Games::Slots.new(@player)
-cat.welcome
-cat.slot
-
-
-
 
 

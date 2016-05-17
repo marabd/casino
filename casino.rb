@@ -36,12 +36,15 @@ class Casino
 		puts "3. Exit"
 		case gets.strip
 		when '1'
-			#reference the Slots module
+			slot_play = Games::Slots.new(@players.first)
+			slot_play.welcome
+			@players.first.bankroll += slot_play.game
+			puts "Your bank roll is now: #{@players.first.bankroll}"
 		when '2'
 			hilow = Games::HighLow.new(@players.first)
 			hilow.welcome
 			@players.first.bankroll += hilow.game
-			puts "Your bank roll is now : #{@players.first.bankroll}"
+			puts "Your bank roll is now: #{@players.first.bankroll}"
 		when '3'
 			puts "Thanks for playing!"
 			exit(0)

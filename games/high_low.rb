@@ -22,7 +22,9 @@ include Mechanics
 			player_card = cards.first
 			dealer_card = cards[1]
 			puts "Your card is:"
-			puts "#{player_card.rank} #{player_card.suit}"
+			puts "player - #{player_card.rank} #{player_card.suit}"
+			puts "dealer - #{dealer_card.rank} #{dealer_card.suit}"
+
 			puts "Do you think your card is higher or lower than the dealer (higher / lower)?"
 			input = gets.strip.downcase
 			if input == 'higher'
