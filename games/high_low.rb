@@ -46,6 +46,7 @@ include Mechanics
 				game
 			end
 		end
+	end
 
   	def player_wins
   		puts "Congratulations!"
@@ -56,5 +57,8 @@ include Mechanics
   		puts "Too Bad!"
   		return @bet * -1
   	end
-	end
 end
+
+# hilow = Games::HighLow.new(@players)
+# hilow.welcome
+# hilow.game

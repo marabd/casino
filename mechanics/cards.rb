@@ -39,5 +39,3 @@ module Mechanics
 	end
 
 end
-
-

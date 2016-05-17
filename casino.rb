@@ -1,4 +1,5 @@
 require 'colorize'
+#require_relative 'mechanics/dice'
 Dir[File.dirname(__FILE__) + '/games/*.rb'].each { |file| require file }
 include Games
 
@@ -17,17 +18,30 @@ class Casino
 
 	def initialize
 		@players = []
+		@number_of_players = all_players
+		@current_player
 	end
 	# when player searches to change player, they are searching to see if their name exists in the array for the name
 	# array.index
 
-	def welcome
+
+	def all_players
 		puts "Welcome to The Ruby Casino!".colorize(:light_blue)
-		puts "What is your name?".colorize(:light_blue)
+		puts "Hi! How Many Players are there?".colorize(:light_blue)
+		player_num=gets.strip.to_i
+		player_num.times do
+			welcome
+		end
+		return player_num
+	end
+
+	def welcome
+		puts "Enter your name?"
 		name = gets.strip
-		puts "What is your bank roll?".colorize(:green)
+		puts "Enter your bankroll?".colorize(:green)
 		bankroll = gets.strip.to_i
-		@players << Player.new(name, bankroll)
+		@current_player = Player.new(name, bankroll)
+		@players << @current_player
 	end
 
 	def menu
@@ -63,39 +77,51 @@ class Casino
 			puts "Bad User Input, Please Choose Again.".colorize(:red)
 			menu
 		end
+	end
 
+	def current_menu
+		puts "Do you want to switch the player? type'y'"
+		choice = gets.strip.to_s
+		if choice == 'y'
+			puts ""
+		elsif choice == 'n'
+			menu
+		else
+			puts "Please type 'y/n'"
+			current_menu
+		end
 	end
 		
 	def end_of_game
-  	puts "Thanks for playing!".colorize(:light_blue)
-  	puts "What would you like to do now?".colorize(:light_blue)
-  	puts "1. Return to the Main Menu"
-  	puts "2. Exit"
+	  	puts "Thanks for playing!".colorize(:light_blue)
+	  	puts "What would you like to do now?".colorize(:light_blue)
+	  	puts "1. Return to the Main Menu"
+	  	puts "2. Switch Player"
+	  	puts "3. Exit"
 		case gets.strip
-  	when '1'
-  		menu
-  	when '2'
-  		exit(0)
-  	else
-  		puts "Bad User Input, Please Choose Again".colorize(:red)
-  		end_of_game
-  	end
+	  	when '1'
+	  		menu
+	  	when '2'
+	  		@players.length.times do |n|
+	  			puts "Type #{n+1} for #{@players[n].name}"
+			end
+			# TODO FIX
+			# gets.strip.to_i
+			# case
+			# when ""
+
+			# end
+	  	when '3'
+	  		exit(0)
+	  	else
+	  		puts "Bad User Input, Please Choose Again".colorize(:red)
+	  		end_of_game
+	  	end
 	end
 			
 	def flow
-		welcome
 		menu
 	end
 end
 
 Casino.new.flow
-
-
-# 	def play
-# 		puts Mechanics::Dice.roll
-# 		cards = Mechanics::Deck.new.cards.shuffle
-# 		cards.each do |card|
-# 			puts "#{card.rank} of #{card.suit}"
-# 		end
-# 	end
-# end
