@@ -12,7 +12,7 @@ include Mechanics
 
 		def welcome
 			puts "Welcome to High / Low."
-			puts "Your Balance Is :  #{@player.bankroll}"
+			puts "Your Balance Is:  #{@player.bankroll}"
 			puts "How much would you like to bet?"
 			@bet = gets.strip.to_i
 		end
