@@ -1,3 +1,4 @@
+require 'colorize'
 Dir[File.dirname(__FILE__) + '/../mechanics/cards.rb'].each { |file| require file }
 
 
@@ -11,9 +12,9 @@ include Mechanics
 		end
 
 		def welcome
-			puts "Welcome to High / Low."
-			puts "Your Balance Is:  #{@player.bankroll}"
-			puts "How much would you like to bet?"
+			puts "Welcome to High / Low.".colorize(:light_blue)
+			puts "Your Balance Is:  #{@player.bankroll}".colorize(:green)
+			puts "How much would you like to bet?".colorize(:light_blue)
 			@bet = gets.strip.to_i
 		end
 
@@ -21,10 +22,8 @@ include Mechanics
 			cards = Mechanics::Deck.new.cards.shuffle
 			player_card = cards.first
 			dealer_card = cards[1]
-			puts "Your card is:"
+			puts "Your card is:".colorize(:yellow)
 			puts "player - #{player_card.rank} #{player_card.suit}"
-			puts "dealer - #{dealer_card.rank} #{dealer_card.suit}"
-
 			puts "Do you think your card is higher or lower than the dealer (higher / lower)?"
 			input = gets.strip.downcase
 			if input == 'higher'

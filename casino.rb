@@ -1,4 +1,4 @@
-#require_relative 'mechanics/dice'
+require 'colorize'
 Dir[File.dirname(__FILE__) + '/games/*.rb'].each { |file| require file }
 include Games
 
@@ -18,22 +18,25 @@ class Casino
 	def initialize
 		@players = []
 	end
+	# when player searches to change player, they are searching to see if their name exists in the array for the name
+	# array.index
 
 	def welcome
-		puts "Welcome to The Ruby Casino!"
-		puts "What is your name?"
+		puts "Welcome to The Ruby Casino!".colorize(:light_blue)
+		puts "What is your name?".colorize(:light_blue)
 		name = gets.strip
-		puts "What is your bank roll?"
+		puts "What is your bank roll?".colorize(:green)
 		bankroll = gets.strip.to_i
 		@players << Player.new(name, bankroll)
 	end
 
 	def menu
-		puts "Hi #{@players.first.name}, your current balance is: #{@players.first.bankroll}."
-		puts "Please choose from the following games:"
+		puts "Hi #{@players.first.name}, your current balance is: #{@players.first.bankroll}.".colorize(:green)
+		puts "Please choose from the following games:".colorize(:light_blue)
 		puts "1. Slots"
 		puts "2. High / Low"
-		puts "3. Exit"
+		puts "3. Roulette"
+		puts "4. Exit"
 		case gets.strip
 		when '1'
 			slot_play = Games::Slots.new(@players.first)
@@ -48,18 +51,24 @@ class Casino
 			puts "Your bank roll is now: #{@players.first.bankroll}"
 			end_of_game
 		when '3'
-			puts "Thanks for playing!"
+			roul = Games::Roulette.new(@players.first)
+			roul.welcome
+			@players.first.bankroll += roul.game
+			puts "Your bank roll is now: #{@players.first.bankroll}"
+			end_of_game
+		when '4'
+			puts "Thanks for playing!".colorize(:light_blue)
 			exit(0)
 		else
-			puts "Bad User Input, Please Choose Again."
+			puts "Bad User Input, Please Choose Again.".colorize(:red)
 			menu
 		end
 
 	end
 		
 	def end_of_game
-  	puts "Thanks for playing!"
-  	puts "What would you like to do now?"
+  	puts "Thanks for playing!".colorize(:light_blue)
+  	puts "What would you like to do now?".colorize(:light_blue)
   	puts "1. Return to the Main Menu"
   	puts "2. Exit"
 		case gets.strip
@@ -68,7 +77,7 @@ class Casino
   	when '2'
   		exit(0)
   	else
-  		puts "Bad User Input, Please Choose Again"
+  		puts "Bad User Input, Please Choose Again".colorize(:red)
   		end_of_game
   	end
 	end
@@ -90,6 +99,3 @@ Casino.new.flow
 # 		end
 # 	end
 # end
-
-# @game = Casino.new
-# @game.play
